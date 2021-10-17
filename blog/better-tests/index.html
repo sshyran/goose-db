@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A container per test makes the bugs go away.">
+        <meta name="description" content="A database container per test makes the bugs go away.">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Ephemeral database containers with ory/dockertest - pressly/goose</title>
+        <title>Ephemeral containers in Go tests - pressly/goose</title>
       
     
     
@@ -61,9 +61,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Ephemeral database containers with ory/dockertest - pressly/goose" >
+        <meta  property="og:title"  content="Ephemeral containers in Go tests - pressly/goose" >
       
-        <meta  property="og:description"  content="A container per test makes the bugs go away." >
+        <meta  property="og:description"  content="A database container per test makes the bugs go away." >
       
         <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/blog/better-tests.png" >
       
@@ -77,9 +77,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Ephemeral database containers with ory/dockertest - pressly/goose" >
+        <meta  name="twitter:title"  content="Ephemeral containers in Go tests - pressly/goose" >
       
-        <meta  name="twitter:description"  content="A container per test makes the bugs go away." >
+        <meta  name="twitter:description"  content="A database container per test makes the bugs go away." >
       
         <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/blog/better-tests.png" >
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ephemeral database containers with ory/dockertest
+              Ephemeral containers in Go tests
             
           </span>
         </div>
@@ -516,10 +516,38 @@
                 
                 <p>Managing state is hard. Managing database state is even harder. And coordinating state within a test suite is just always a bad time.</p>
 <p>But it doesn't have to be this way!</p>
-<p>There is a fantastic Go package called <a href="https://github.com/ory/dockertest">ory/dockertest</a> that allows you to spin up ephemeral docker containers. It'll work both locally (assuming you have Docker installed) and in your Continuous Integration (CI) pipelines.</p>
-<p>After applying thousands of migrations in production we know <code>goose</code> is production-ready and does the right thing. But we have plans to add more functionality to <code>goose</code>, and integration tests are a welcome addition to the <code>goose</code> test-suie.</p>
+<p>There is a fantastic Go package called <a href="https://github.com/ory/dockertest">ory/dockertest</a> that allows you to spin up ephemeral docker containers. It will work locally (assuming Docker is installed) and in your Continuous Integration (CI) pipelines.</p>
+<p>After applying thousands of migrations in production we know <code>goose</code> is production-ready and does the right thing. But we have plans to add more functionality to <code>goose</code>, and integration tests are a welcome addition to the <code>goose</code> test-suite.</p>
 <p>In a recent <code>goose</code> release (<a href="https://github.com/pressly/goose/pull/276">PR#276</a>) we added container-based database tests. These tests spin up a fresh database <em>per test</em>. Yes, that's right, we're talking dozens of containers.</p>
-<p>After each test is completed the container is cleaned up, something like this:</p>
+<p>Getting started is easy:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">options</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">dockertest</span><span class="p">.</span><span class="nx">RunOptions</span><span class="p">{</span>
+    <span class="nx">Repository</span><span class="p">:</span> <span class="s">&quot;postgres&quot;</span><span class="p">,</span>
+    <span class="nx">Tag</span><span class="p">:</span>        <span class="s">&quot;14-alpine&quot;</span><span class="p">,</span>
+    <span class="nx">Env</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">&quot;POSTGRES_USER=postgres&quot;</span><span class="p">,</span>
+        <span class="s">&quot;POSTGRES_PASSWORD=password1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;POSTGRES_DB=testdb&quot;</span><span class="p">,</span>
+        <span class="s">&quot;listen_addresses = &#39;*&#39;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">Labels</span><span class="p">:</span>       <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;goose_test&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nx">container</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">pool</span><span class="p">.</span><span class="nx">RunWithOptions</span><span class="p">(</span>
+    <span class="nx">options</span><span class="p">,</span>
+    <span class="kd">func</span><span class="p">(</span><span class="nx">config</span> <span class="o">*</span><span class="nx">docker</span><span class="p">.</span><span class="nx">HostConfig</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Set AutoRemove to true so that stopped container goes away by itself.</span>
+        <span class="nx">config</span><span class="p">.</span><span class="nx">AutoRemove</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="nx">config</span><span class="p">.</span><span class="nx">RestartPolicy</span> <span class="p">=</span> <span class="nx">docker</span><span class="p">.</span><span class="nx">RestartPolicy</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1">// Fetch port dynamically assigned to container, something like 55,245</span>
+<span class="nx">dynamicPort</span> <span class="o">:=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">GetPort</span><span class="p">(</span><span class="s">&quot;5432/tcp&quot;</span><span class="p">)</span> 
+
+<span class="c1">// Get a *sql.DB connection, using the dynamic port assigned to container</span>
+<span class="c1">// postgresql://postgres:password1@localhost:{dynamicPort}/testdb?sslmode=disable</span>
+<span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">dialectPostgres</span><span class="p">,</span> <span class="nx">psqlInfo</span><span class="p">)</span>
+</code></pre></div>
+<p>After each test has run the container is cleaned up, something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="nx">t</span><span class="p">.</span><span class="nx">Cleanup</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">pool</span><span class="p">.</span><span class="nx">Purge</span><span class="p">(</span><span class="nx">container</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to purge resource: %v&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
@@ -549,7 +577,6 @@
 | PASS   | 6.12s   | github.com/pressly/goose/v3/tests/e2e |
 +--------+---------+---------------------------------------+
 </code></pre></div>
-<p>So, next time you need a database in your containers</p>
                 
                   
                 
