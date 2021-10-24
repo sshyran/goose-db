@@ -6,12 +6,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Introductory blog post.">
+        <meta name="description" content="The missing goose docs.">
       
       
       
       
-        <link rel="canonical" href="https://pressly.github.io/goose/blog/welcome/">
+        <link rel="canonical" href="https://pressly.github.io/goose/blog/out-of-order/">
       
       
         
@@ -21,7 +21,7 @@
     
     
       
-        <title>Hello, docs! - pressly/goose</title>
+        <title>Adding support for out-of-order migrations - pressly/goose</title>
       
     
     
@@ -61,11 +61,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Hello, docs! - pressly/goose" >
+        <meta  property="og:title"  content="Adding support for out-of-order migrations - pressly/goose" >
       
-        <meta  property="og:description"  content="Introductory blog post." >
+        <meta  property="og:description"  content="The missing goose docs." >
       
-        <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/blog/welcome.png" >
+        <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/blog/out-of-order.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -73,15 +73,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://pressly.github.io/goose/blog/welcome/" >
+        <meta  property="og:url"  content="https://pressly.github.io/goose/blog/out-of-order/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Hello, docs! - pressly/goose" >
+        <meta  name="twitter:title"  content="Adding support for out-of-order migrations - pressly/goose" >
       
-        <meta  name="twitter:description"  content="Introductory blog post." >
+        <meta  name="twitter:description"  content="The missing goose docs." >
       
-        <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/blog/welcome.png" >
+        <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/blog/out-of-order.png" >
       
     
     
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hello, docs!
+              Adding support for out-of-order migrations
             
           </span>
         </div>
@@ -222,7 +222,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../welcome/" class="md-tabs__link md-tabs__link--active">
         Blog
       </a>
     </li>
@@ -446,19 +446,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../welcome/" class="md-nav__link">
         Welcome
       </a>
-      
     </li>
   
 
@@ -496,11 +488,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../out-of-order/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Adding support for out-of-order migrations
       </a>
+      
     </li>
   
 
@@ -526,15 +526,33 @@
                 
                 
                 
-                  <h1>Welcome</h1>
+                  <h1>Adding support for out-of-order migrations</h1>
                 
-                <p>Introductory blog post. I guess I'll write a few words.</p>
-<p><code>goose</code> was originally open sourced in late 2012 by Liam Staskawicz on <a href="https://bitbucket.org/liamstask/goose">bitbucket.org/liamstask/goose</a> with an MIT license.</p>
-<p>Great project at the time. Remember, Go itself reached <a href="https://blog.golang.org/go1">version 1.0</a> in the same year (March, 2012).</p>
-<p>However, there were a few items left to be desired, and so the Pressly team forked the project in 2016 and has maintained it since. You can read the <a href="/goose/#goals-of-this-fork">Goals of this fork</a> section for more info. But that's enough looking back. Let's look into the <strong>future</strong>.</p>
-<p>We aim to continue maintaining <code>goose</code>; adding new features, fixing bugs and providing developer resources to improve the experience. There are also newer features of the standard library and community packages we may consider adopting.</p>
-<p>There are lots of issues to triage, and a few burning features we need to implement.</p>
-<p>After thousands of migrations in production we've learned a thing or two, and have ideas on how to improve <code>goose</code> even more. Stay tuned!</p>
+                <p>Starting with <code>goose</code> <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">v3.3.0</a> we added the ability to apply missing (out-of-order) migrations. Thanks for all the the community feedback over the years.</p>
+<p>Let's back it up, what are "missing" or "out-of-order migrations?</p>
+<p>Suppose migration 1 and 4 are applied and then 2, 3, 5 are introduced. Prior to <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">v3.3.0</a> <code>goose</code> would ignore migrations 2, 3 and apply only 5. Although this might seem odd, this is fairly consistent behaviour with other migration tools.</p>
+<p>However, many users were not satisfied with this behaviour, summarized as:</p>
+<ul>
+<li>migrations 2 and 3 are "silently" ignored</li>
+<li>unable to apply migrations 2 and 3 if newer versions have already been applied. To paraphrase this <a href="https://github.com/pressly/goose/issues/172#issuecomment-493645187">comment</a></li>
+</ul>
+<blockquote>
+<p><em>I would very much prefer just to apply Bill's migration and call it a day.</em></p>
+</blockquote>
+<p>This comment from <code>@zmoazeni</code> has stuck with me over the years.</p>
+<hr />
+<p>Internally within Pressly (acquired by <a href="https://www.alida.com/">Alida</a>) we recommended the <a href="https://github.com/pressly/goose#hybrid-versioning">hybrid versioning approach</a>. Briefly, in development developers create <em>timestamped</em> migrations, and subsequently when that PR is merged into the <code>main</code> branch its converted into a <em>sequential</em> migration. </p>
+<p>Then when a release was cut and rolled out to production only sequential migrations were applied. It was a process solution to the problem.</p>
+<p>Buttttt..... as we listened to community feedback, and saw the rise in the number of <code>goose</code> forks (mainly to support missing migrations) we decided to do something about it.</p>
+<p>From this <a href="https://github.com/pressly/goose/issues/262#issue-960391249">comment</a>:</p>
+<blockquote>
+<p>We should meet users in the middle (lots of great feedback from the community) and give them the flexibility to use <code>goose</code> as they see fit. The responsibility will be shifted from the tool itself, to the end user.</p>
+</blockquote>
+<p>Here we are, this is how it works today.</p>
+<p>By default, if you attempt to apply missing (out-of-order) migrations <code>goose</code> will raise an error. However, if you want to apply these missing migrations pass <code>goose</code> the <code>-allow-missing</code> flag, or if using as a library supply the functional option <code>goose.WithAllowMissing()</code> to Up, UpTo or UpByOne.</p>
+<p>More details can be found in the <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">Changelog here</a> and the <a href="https://github.com/pressly/goose/issues/262">tracking issue #262</a>.</p>
+<p>Hope folks find this useful. More awesome things are planned for <code>goose</code> 🚀.</p>
+<p>ps. consider dropping <a href="https://github.com/pressly/goose">pressly/goose</a> a ⭐️ if you find this package useful.</p>
                 
                   
                 
@@ -562,7 +580,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../FAQ/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FAQ" rel="prev">
+        <a href="../better-tests/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Better tests with containers" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -571,26 +589,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              FAQ
+              Better tests with containers
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../embed-sql-migrations/" class="md-footer__link md-footer__link--next" aria-label="Next: Embedding migrations" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Embedding migrations
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
