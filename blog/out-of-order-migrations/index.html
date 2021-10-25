@@ -540,20 +540,26 @@
 <p><em>I would very much prefer just to apply Bill's migration and call it a day.</em></p>
 </blockquote>
 <p>This comment from <a href="https://github.com/zmoazeni"><code>@zmoazeni</code></a> has stuck with me over the years.</p>
+<p>Given that <code>goose</code> maintains a full history of applied migrations in its <code>goose_db_version</code> table, we are able to resolve the database state against the migration files. And now, if missing (out-of-order) migrations are detected users can opt-in to apply them.</p>
 <hr />
-<p>Internally within Pressly (acquired by <a href="https://www.alida.com/">Alida</a>) we suggested adopting the <a href="https://github.com/pressly/goose#hybrid-versioning">hybrid versioning approach</a>. Briefly, in development developers create <strong><em>timestamped</em></strong> migrations, and subsequently when that PR is merged into the <code>main</code> branch its converted into a <strong><em>sequential</em></strong> migration. </p>
-<p>Then when a release is cut and rolled out to production only sequential migrations are applied. It was a process solution to the problem that worked for our team. Yes, yes.. this does require developers to be rebasing and resolving conflicts (if any) between migrations.</p>
+<p>Internally within Pressly (acquired by <a href="https://www.alida.com/">Alida</a>) we suggested adopting the <a href="https://github.com/pressly/goose#hybrid-versioning">hybrid versioning approach</a>. Briefly, in development developers create <strong><em>timestamped</em></strong> migrations, and subsequently when that PR is merged into the <code>main</code> branch its converted into a <strong><em>sequential</em></strong> migration. This is done with the <code>goose fix</code> command.</p>
+<p>Then when a release is cut and rolled out to production only sequential migrations are applied. It was a solution to the problem that worked for our team. Yes, yes.. this does require developers to be rebasing/merging and resolving conflicts (if any) between migrations.</p>
 <figure>
 <p><img alt="hybrid versioning approach" src="../../assets/hybrid-versioning-approach.png" width="550px;" /></p>
 </figure>
-<p>Buttttt..... as we listened to community feedback, and saw the rise in the number of <code>goose</code> forks (mainly to support missing migrations) we decided to do something about it.</p>
-<p>From this <a href="https://github.com/pressly/goose/issues/262#issue-960391249">comment</a>:</p>
+<ul>
+<li>A timestamped version uses a time-based format (minute resolution): <code>20060102150405</code></li>
+<li>A sequential version is typically a low number</li>
+</ul>
+<p>There should <em>never</em> (at least in our lifetime) be a collision between timestamped and sequential versions.</p>
+<p>Buttttt..... as we listened to community feedback, and saw the rise in the number of <code>goose</code> forks (mainly to support missing migrations), we decided the community was right.</p>
+<p>I think this <a href="https://github.com/pressly/goose/issues/262#issue-960391249">comment</a> summarized it well:</p>
 <blockquote>
-<p>We should meet users in the middle (lots of great feedback from the community) and give them the flexibility to use <code>goose</code> as they see fit. The responsibility will be shifted from the tool itself, to the end user.</p>
+<p><em>We should meet users in the middle (lots of great feedback from the community) and give them the flexibility to use <code>goose</code> as they see fit. The responsibility will be shifted from the tool itself, to the end user.</em></p>
 </blockquote>
-<p>Here we are, this is how it works today.</p>
-<p>By default, if you attempt to apply missing (out-of-order) migrations <code>goose</code> will raise an error. However, if you want to apply these missing migrations pass <code>goose</code> the <code>-allow-missing</code> flag, or if using as a library supply the functional option <code>goose.WithAllowMissing()</code> to Up, UpTo or UpByOne.</p>
-<p>More details can be found in the <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">Changelog here</a> and the <a href="https://github.com/pressly/goose/issues/262">tracking issue #262</a>.</p>
+<p>To recap, this is the new behaviour of <code>goose</code>:</p>
+<p>If you attempt to apply missing (out-of-order) migrations <code>goose</code> will raise an error (previously <code>goose</code> would ignore these migrations). However, if you do want to apply these missing migrations pass <code>goose</code> the <code>-allow-missing</code> flag, or if using as a library supply the functional option <code>goose.WithAllowMissing()</code> to Up, UpTo or UpByOne commands.</p>
+<p>More details can be found in the <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">Changelog</a> and the <a href="https://github.com/pressly/goose/issues/262">issue #262</a>.</p>
 <p>Hope folks find this useful. More awesome things are planned for <code>goose</code> 🚀.</p>
 <p>ps. consider dropping <a href="https://github.com/pressly/goose">pressly/goose</a> a ⭐️ if you find this package useful.</p>
                 
