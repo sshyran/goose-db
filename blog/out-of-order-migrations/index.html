@@ -542,7 +542,7 @@
 <p>This comment from <a href="https://github.com/zmoazeni"><code>@zmoazeni</code></a> has stuck with me over the years.</p>
 <hr />
 <p>Internally within Pressly (acquired by <a href="https://www.alida.com/">Alida</a>) we suggested adopting the <a href="https://github.com/pressly/goose#hybrid-versioning">hybrid versioning approach</a>. Briefly, in development developers create <strong><em>timestamped</em></strong> migrations, and subsequently when that PR is merged into the <code>main</code> branch its converted into a <strong><em>sequential</em></strong> migration. </p>
-<p>Then when a release is cut and rolled out to production only sequential migrations are applied. It was a process solution to the problem that worked for our team.</p>
+<p>Then when a release is cut and rolled out to production only sequential migrations are applied. It was a process solution to the problem that worked for our team. Yes, yes.. this does require developers to be rebasing and resolving conflicts (if any) between migrations.</p>
 <figure>
 <p><img alt="hybrid versioning approach" src="../../assets/hybrid-versioning-approach.png" width="550px;" /></p>
 </figure>
