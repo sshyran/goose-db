@@ -6,35 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="The missing goose docs.">
+        <meta name="description" content="Database seeding. Apply migrations with no versioning.">
       
       
       
-        <link rel="canonical" href="https://pressly.github.io/goose/FAQ/">
+        <link rel="canonical" href="https://pressly.github.io/goose/blog/2021/no-version-migrations/">
       
       
         
       
-      <link rel="icon" href="../assets/favicon.ico">
+      <link rel="icon" href="../../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3+insiders-4.5.0">
     
     
       
-        <title>FAQ - pressly/goose</title>
+        <title>Ad-hoc migrations with no versioning - pressly/goose</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ad3c33ca.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad3c33ca.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
           <meta name="theme-color" content="#ffffff">
         
       
-      <link rel="preload" as="style" href="../assets/stylesheets/vendor/mermaid.9c0dc1da.min.css">
+      <link rel="preload" as="style" href="../../../assets/stylesheets/vendor/mermaid.9c0dc1da.min.css">
       
     
     
@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -58,11 +58,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="FAQ - pressly/goose" >
+        <meta  property="og:title"  content="Ad-hoc migrations with no versioning - pressly/goose" >
       
-        <meta  property="og:description"  content="The missing goose docs." >
+        <meta  property="og:description"  content="Database seeding. Apply migrations with no versioning." >
       
-        <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/FAQ.png" >
+        <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/blog/2021/no-version-migrations.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -70,15 +70,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://pressly.github.io/goose/FAQ/" >
+        <meta  property="og:url"  content="https://pressly.github.io/goose/blog/2021/no-version-migrations/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="FAQ - pressly/goose" >
+        <meta  name="twitter:title"  content="Ad-hoc migrations with no versioning - pressly/goose" >
       
-        <meta  name="twitter:description"  content="The missing goose docs." >
+        <meta  name="twitter:description"  content="Database seeding. Apply migrations with no versioning." >
       
-        <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/FAQ.png" >
+        <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/blog/2021/no-version-migrations.png" >
       
     
     
@@ -122,7 +122,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-hybrid-versioning" class="md-skip">
+        <a href="#ad-hoc-migrations-with-no-versioning" class="md-skip">
           Skip to content
         </a>
       
@@ -136,9 +136,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="pressly/goose" class="md-header__button md-logo" aria-label="pressly/goose" data-md-component="logo">
+    <a href="../../.." title="pressly/goose" class="md-header__button md-logo" aria-label="pressly/goose" data-md-component="logo">
       
-  <img src="../assets/goose_logo.png" alt="logo">
+  <img src="../../../assets/goose_logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FAQ
+              Ad-hoc migrations with no versioning
             
           </span>
         </div>
@@ -235,7 +235,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
     
@@ -260,7 +260,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../commands/supported/" class="md-tabs__link">
+        <a href="../../../commands/supported/" class="md-tabs__link">
           
   
   CLI Commands
@@ -277,12 +277,10 @@
   
     
     
-      
-    
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../FAQ/" class="md-tabs__link">
         
   
   FAQ
@@ -298,6 +296,8 @@
   
     
     
+      
+    
   
   
     
@@ -312,7 +312,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../blog/2021/welcome/" class="md-tabs__link">
+        <a href="../welcome/" class="md-tabs__link md-tabs__link--active">
           
   
   Blog
@@ -347,9 +347,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="pressly/goose" class="md-nav__button md-logo" aria-label="pressly/goose" data-md-component="logo">
+    <a href="../../.." title="pressly/goose" class="md-nav__button md-logo" aria-label="pressly/goose" data-md-component="logo">
       
-  <img src="../assets/goose_logo.png" alt="logo">
+  <img src="../../../assets/goose_logo.png" alt="logo">
 
     </a>
     pressly/goose
@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -428,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -487,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../commands/supported/" class="md-nav__link">
+      <a href="../../../commands/supported/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../commands/experimental/" class="md-nav__link">
+      <a href="../../../commands/experimental/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -532,26 +532,9 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    FAQ
-  </span>
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../FAQ/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -559,45 +542,6 @@
   </span>
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-hybrid-versioning" class="md-nav__link">
-    What is hybrid versioning?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-add-go-based-migrations" class="md-nav__link">
-    How to add Go-based migrations?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-is-it-both-a-cli-and-library" class="md-nav__link">
-    Why is it both a CLI and library?
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -609,12 +553,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -640,14 +586,16 @@
               
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
       
       
       
@@ -675,7 +623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2021/welcome/" class="md-nav__link">
+      <a href="../welcome/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -694,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2021/embed-sql-migrations/" class="md-nav__link">
+      <a href="../embed-sql-migrations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -713,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2021/better-tests/" class="md-nav__link">
+      <a href="../better-tests/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -732,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2021/out-of-order-migrations/" class="md-nav__link">
+      <a href="../out-of-order-migrations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -749,9 +697,28 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../blog/2021/no-version-migrations/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ad-hoc migrations with no versioning
+  </span>
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -759,6 +726,54 @@
   </span>
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#brief-summary" class="md-nav__link">
+    Brief Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#but-why" class="md-nav__link">
+    But why?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-thoughts" class="md-nav__link">
+    Final Thoughts
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -794,6 +809,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -802,22 +819,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-hybrid-versioning" class="md-nav__link">
-    What is hybrid versioning?
+  <a href="#brief-summary" class="md-nav__link">
+    Brief Summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-add-go-based-migrations" class="md-nav__link">
-    How to add Go-based migrations?
+  <a href="#but-why" class="md-nav__link">
+    But why?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-is-it-both-a-cli-and-library" class="md-nav__link">
-    Why is it both a CLI and library?
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-thoughts" class="md-nav__link">
+    Final Thoughts
   </a>
   
 </li>
@@ -839,18 +863,73 @@
 
 
 
-  <h1>FAQ</h1>
-
-<div class="admonition warning">
-<p>This sections remains under constructions</p>
+<h1 id="ad-hoc-migrations-with-no-versioning">Ad-hoc migrations with no versioning</h1>
+<p>This post describes a new feature recently added to <code>goose</code> -- the ability to apply migrations with <strong>no versioning</strong>. A common use case is to seed a database with data <em>after</em> versioned migrations have been applied.</p>
+<p>If you think of versioned migrations as the blueprint for a house (the schema), then unversioned migrations are like the furnishings inside (the data).</p>
+<p>A GitHub user <a href="https://github.com/soggycactus">@soggycactus</a> stated the problem well (<a href="https://github.com/pressly/goose/issues/259#issue-956845240">#235 comment</a>):</p>
+<blockquote>
+<p>... I always find myself creating some sort of wrapper that allows me to use goose to seed my local and development environments with test data</p>
+</blockquote>
+<h3 id="brief-summary">Brief Summary</h3>
+<ul>
+<li>keep versioned migrations in a dedicated directory (e.g., ./schema/migrations)</li>
+<li>continue running <code>goose</code> commands like normal: <code>goose -dir ./schema/migrations up</code></li>
+<li>add unversioned migrations to a different directory (e.g., ./schema/seed)</li>
+<li>run <code>goose</code> commands with <code>-no-versioning</code> flag using seed directory</li>
+</ul>
+<p>By adding <code>-no-versioning</code> flag (CLI) or supplying <code>WithNoVersioning()</code> option (library), we instruct <code>goose</code> to apply migrations but to ignore tracking the version in the database schema table.</p>
+<hr />
+<h3 id="but-why">But why?</h3>
+<p>A common use case is to seed an environment with data, such as local development environment or integration tests. Because we don't want this data to be applied to production, we keep it separate from the versioned migrations in a different directory.</p>
+<p><strong>Seed data</strong>: think many <code>INSERT INTO</code> statements in up migrations and <code>DELETE FROM</code> or <code>TRUNCATE</code> in down migrations.</p>
+<ul>
+<li>new developer joins, spins up a database, applies versioned migrations but requires "seed" data to get started</li>
+<li>integration or end-end tests that rely on pre-existing data. It's common to have your application create data, but sometimes you just want data to be there for external tests not involving your API</li>
+<li>optimizing delicate queries on a database with pre-populated data. Avoid writing queries against an empty database</li>
+</ul>
+<div class="admonition info">
+<p>Remember, if your application does requires some static, pre-existing data, then just insert it along with your regular versioned schema migrations.</p>
 </div>
-<p>The idea is to triage the existing issues on GitHub and answer commonly asked questions.</p>
-<h2 id="what-is-hybrid-versioning">What is hybrid versioning?</h2>
-<p>...</p>
-<h2 id="how-to-add-go-based-migrations">How to add Go-based migrations?</h2>
-<p>...</p>
-<h2 id="why-is-it-both-a-cli-and-library">Why is it both a CLI and library?</h2>
-<p>..</p>
+<h3 id="example">Example</h3>
+<p>Seeding integration tests and wiping data, without having to reset the database schema.</p>
+<p>Let's use an example:</p>
+<div class="highlight"><pre><span></span><code>.
+└── schema
+    ├── migrations
+    │   ├── 00001_add_users_table.sql
+    │   ├── 00002_add_posts_table.sql
+    │   └── 00003_alter_users_table.sql
+    └── seed
+        ├── 00001_seed_users_table.sql
+        └── 00002_seed_posts_table.sql
+</code></pre></div>
+<p>Running the following command creates the desired shape of the database:</p>
+<pre><code>goose -dir ./schema/migrations up
+</code></pre>
+<p>Assuming you're using the default goose table name <code>goose_db_version</code> then querying this table will return 3 versioned migrations.</p>
+<p>Now, suppose we want to run integration tests against a database that contains pre-populated data. Running the following command applies two migrations but <strong>it does not track their version in the database</strong>.</p>
+<pre><code>goose -dir ./schema/seed -no-versioning up
+</code></pre>
+<hr />
+<p>If you run the initial command again:</p>
+<pre><code>goose -dir ./schema/migrations up
+</code></pre>
+<p><code>goose</code> will output <em>"no new migrations found"</em>. Because <code>goose</code> knows we already applied 3 migrations, so no further work to do.</p>
+<p>But, if you run the second command again: </p>
+<pre><code>goose -dir ./schema/seed -no-versioning up
+</code></pre>
+<p><code>goose</code> doesn't know about unversioned migrations (due to the <code>-no-versioning</code> flag) so it will apply the seed migrations once again. Depending how you wrote the migrations, this may or may not succeed.</p>
+<hr />
+<p>Lastly, we're done with our integration test. The neat thing with the <code>-no-versioning</code> flag is it enables you to wipe the data without having to migrate the entire database down and up again.</p>
+<p>Running the following command will apply the down migrations in your seed files, in reverse order:</p>
+<pre><code>goose -dir ./schema/seed -no-versioning down-to 0
+# or
+goose -dir ./schema/seed -no-versioning reset
+</code></pre>
+<p>These two commands are the same--applying all down migrations starting from the highest to the lowest numbered migration files in the schema directory.</p>
+<h3 id="final-thoughts">Final Thoughts</h3>
+<p>With the <code>-no-versioning</code> flag (CLI) or <code>WithNoVersioning()</code> option (library) you now have the ability to apply arbitrary SQL statements to the database.</p>
+<p>Just remember, these operations are not tracked (versioned) and are intended to be used in development/testing environments.</p>
 
 
 
@@ -873,7 +952,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../commands/experimental/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Experimental" rel="prev">
+        <a href="../out-of-order-migrations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding support for out-of-order migrations" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -882,26 +961,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Experimental
+              Adding support for out-of-order migrations
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../blog/2021/welcome/" class="md-footer__link md-footer__link--next" aria-label="Next: Hello, docs!" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Hello, docs!
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
@@ -926,10 +990,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.top", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.2c14e664.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.top", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.2c14e664.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.21ccbe1b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.21ccbe1b.min.js"></script>
       
     
   </body>
