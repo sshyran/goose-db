@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="The missing goose docs.">
+        <meta name="description" content="Visualizing goose up and down commands.">
       
       
       
-        <link rel="canonical" href="https://pressly.github.io/goose/blog/2021/out-of-order-migrations/">
+        <link rel="canonical" href="https://pressly.github.io/goose/blog/2021/visualizing-up-down-commands/">
       
       
         
@@ -20,7 +20,7 @@
     
     
       
-        <title>Adding support for out-of-order migrations - pressly/goose</title>
+        <title>Visualizing goose up and down commands - pressly/goose</title>
       
     
     
@@ -58,11 +58,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Adding support for out-of-order migrations - pressly/goose" >
+        <meta  property="og:title"  content="Visualizing goose up and down commands - pressly/goose" >
       
-        <meta  property="og:description"  content="The missing goose docs." >
+        <meta  property="og:description"  content="Visualizing goose up and down commands." >
       
-        <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/blog/2021/out-of-order-migrations.png" >
+        <meta  property="og:image"  content="https://pressly.github.io/goose/assets/images/social/blog/2021/visualizing-up-down-commands.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -70,15 +70,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://pressly.github.io/goose/blog/2021/out-of-order-migrations/" >
+        <meta  property="og:url"  content="https://pressly.github.io/goose/blog/2021/visualizing-up-down-commands/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Adding support for out-of-order migrations - pressly/goose" >
+        <meta  name="twitter:title"  content="Visualizing goose up and down commands - pressly/goose" >
       
-        <meta  name="twitter:description"  content="The missing goose docs." >
+        <meta  name="twitter:description"  content="Visualizing goose up and down commands." >
       
-        <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/blog/2021/out-of-order-migrations.png" >
+        <meta  name="twitter:image"  content="https://pressly.github.io/goose/assets/images/social/blog/2021/visualizing-up-down-commands.png" >
       
     
     
@@ -124,7 +124,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-support-for-out-of-order-migrations" class="md-skip">
+        <a href="#a-tour-of-goose-up-and-down-commands" class="md-skip">
           Skip to content
         </a>
       
@@ -156,7 +156,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Adding support for out-of-order migrations
+              Visualizing goose up and down commands
             
           </span>
         </div>
@@ -680,18 +680,9 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../out-of-order-migrations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -699,7 +690,6 @@
   </span>
 
       </a>
-      
     </li>
   
 
@@ -728,9 +718,28 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../visualizing-up-down-commands/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Visualizing goose up and down commands
+  </span>
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -738,6 +747,54 @@
   </span>
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#up-commands" class="md-nav__link">
+    up commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#up-examples" class="md-nav__link">
+    up examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#down-commands" class="md-nav__link">
+    down commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#down-examples" class="md-nav__link">
+    down examples
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -776,6 +833,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#up-commands" class="md-nav__link">
+    up commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#up-examples" class="md-nav__link">
+    up examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#down-commands" class="md-nav__link">
+    down commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#down-examples" class="md-nav__link">
+    down examples
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -791,41 +884,95 @@
 
 
 
-<h1 id="adding-support-for-out-of-order-migrations">Adding support for out-of-order migrations</h1>
-<p>Starting with <code>goose</code> <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">v3.3.0</a> we added the ability to apply missing (out-of-order) migrations. Thanks for all the the community feedback over the years.</p>
-<p>Let's back it up, what are "missing" or "out-of-order" migrations?</p>
-<p>Suppose migration 1 and 4 are applied and then 2, 3, 5 are introduced. Prior to <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">v3.3.0</a> <code>goose</code> would ignore migrations 2, 3 and apply only 5. Although this might seem odd, this is fairly consistent behaviour with other migration tools.</p>
-<p>However, many users were not satisfied with this behaviour, summarized as:</p>
+<h1 id="a-tour-of-goose-up-and-down-commands">A tour of goose up and down commands</h1>
+<p>A while ago a co-op student, who happened to be a visual leaner, asked if it were possible to explain <code>goose</code> commands visually. At the time we were still at an office, so we gathered around the whiteboard and doodled some diagrams.</p>
+<p>This post captures some of those whiteboard sketches, which seemed to help.</p>
+<h2 id="up-commands"><strong>up commands</strong></h2>
+<dl>
+<dt><strong><code>goose up</code></strong></dt>
+<dd>
+<p>migrate all pending migrations to the most recent version</p>
+</dd>
+<dt><strong><code>goose up-by-one</code></strong></dt>
+<dd>
+<p>migrate a single pending version</p>
+</dd>
+<dt><strong><code>goose up-to N</code></strong> </dt>
+<dd>
+<p>migrate to a specific pending version, where N is a migration number</p>
+</dd>
+</dl>
+<h2 id="up-examples"><strong>up examples</strong></h2>
+<p>Let's illustrate up commands with a concrete example.</p>
+<p>Suppose our ./schema/migrations folder contains 11 migration files. We have previously applied 8 migrations and 3 migrations are currently pending.</p>
+<p>Running <code>goose version</code> returns: <strong><em>goose: version 8</em></strong></p>
+<p>Running <code>goose status</code> returns:</p>
+<div class="highlight"><pre><span></span><code>Applied At                  Migration
+=======================================
+Sun Dec 19 20:09:48 2021 -- 00001_a.sql
+Sun Dec 19 20:09:48 2021 -- 00002_b.sql
+Sun Dec 19 20:09:48 2021 -- 00003_c.sql
+Sun Dec 19 20:09:48 2021 -- 00004_d.sql
+Sun Dec 19 20:09:48 2021 -- 00005_e.sql
+Sun Dec 19 20:09:48 2021 -- 00006_f.sql
+Sun Dec 19 20:09:48 2021 -- 00007_g.sql
+Sun Dec 19 20:09:48 2021 -- 00008_h.sql
+Pending                  -- 00009_i.sql
+Pending                  -- 00010_j.sql
+Pending                  -- 00011_k.sql
+</code></pre></div>
 <ul>
-<li>migrations 2 and 3 are "silently" ignored</li>
-<li>unable to apply migrations 2 and 3 if newer versions have already been applied. To paraphrase this <a href="https://github.com/pressly/goose/issues/172#issuecomment-493645187">comment</a>:</li>
+<li>Running <code>goose up</code> applies all 3 pending migrations: 9, 10 and 11</li>
+<li>Running <code>goose up-by-one</code>  applies only migration 9</li>
+<li>Running <code>goose up-to 8</code> does nothing, since 8 has already been applied</li>
+<li>Running <code>goose up-to 10</code> applies migrations 9 and 10</li>
 </ul>
-<blockquote>
-<p><em>I would very much prefer just to apply Bill's migration and call it a day.</em></p>
-</blockquote>
-<p>This comment from <a href="https://github.com/zmoazeni"><code>@zmoazeni</code></a> has stuck with me over the years.</p>
-<p>Given that <code>goose</code> maintains a full history of applied migrations in its <code>goose_db_version</code> table, we are able to resolve the database state against the migration files. And now, if missing (out-of-order) migrations are detected users can opt-in to apply them.</p>
-<hr />
-<p>Internally within Pressly (acquired by <a href="https://www.alida.com/">Alida</a>) we suggested adopting the <a href="https://github.com/pressly/goose#hybrid-versioning">hybrid versioning approach</a>. Briefly, in development developers create <strong><em>timestamped</em></strong> migrations, and subsequently when that PR is merged into the <code>main</code> branch its converted into a <strong><em>sequential</em></strong> migration. This is done with the <code>goose fix</code> command.</p>
-<p>Then when a release is cut and rolled out to production only sequential migrations are applied. It was a solution to the problem that worked for our team. Yes, yes.. this does require developers to be rebasing/merging and resolving conflicts (if any) between migrations.</p>
 <figure>
-<p><img alt="hybrid versioning approach" src="../assets/hybrid-versioning-approach.png" width="550px;" /></p>
+<p><img alt="goose up commands illustrated" src="../../../assets/goose-up-command.png" width="550px;" /></p>
 </figure>
+<h2 id="down-commands"><strong>down commands</strong></h2>
+<dl>
+<dt><strong><code>goose down</code></strong></dt>
+<dd>
+<p>migrate the latest version down</p>
+</dd>
+<dt><strong><code>goose down-to N</code></strong> </dt>
+<dd>
+<p>migrate down to a specific version, where N is a migration number</p>
+</dd>
+</dl>
+<h2 id="down-examples"><strong>down examples</strong></h2>
+<p>Let's illustrate down commands, continuing with the above example. We have previously applied all 11 migrations from the ./schema/migrations folder.</p>
+<p>Running <code>goose version</code> returns: <strong><em>goose: version 11</em></strong></p>
+<p>Running <code>goose status</code> returns:</p>
+<div class="highlight"><pre><span></span><code>Applied At                  Migration
+=======================================
+Sun Dec 19 21:31:11 2021 -- 00001_a.sql
+Sun Dec 19 21:31:11 2021 -- 00002_b.sql
+Sun Dec 19 21:31:11 2021 -- 00003_c.sql
+Sun Dec 19 21:31:11 2021 -- 00004_d.sql
+Sun Dec 19 21:31:11 2021 -- 00005_e.sql
+Sun Dec 19 21:31:11 2021 -- 00006_f.sql
+Sun Dec 19 21:31:11 2021 -- 00007_g.sql
+Sun Dec 19 21:31:11 2021 -- 00008_h.sql
+Sun Dec 19 21:31:11 2021 -- 00009_i.sql
+Sun Dec 19 21:31:11 2021 -- 00010_j.sql
+Sun Dec 19 21:31:11 2021 -- 00011_k.sql
+</code></pre></div>
 <ul>
-<li>A timestamped version uses a time-based format (second resolution): <code>20060102150405</code></li>
-<li>A sequential version is typically a low number</li>
+<li>Running <code>goose down</code> applies the down migration for 11</li>
+<li>Running <code>goose down-to 11</code>  does nothing</li>
+<li>Running <code>goose down-to 9</code> applies the down migrations for 11 and 10</li>
+<li>Running <code>goose down-to 0</code> applies all down migrations</li>
 </ul>
-<p>There should <em>never</em> (at least in our lifetime) be a collision between timestamped and sequential versions.</p>
-<p>Buttttt..... as we listened to community feedback, and saw the rise in the number of <code>goose</code> forks (mainly to support missing migrations), we decided the community was right. The hybrid versioning approach is not for everyone and it wasn't fair for us to impose this strict restriction.</p>
-<p>I think this <a href="https://github.com/pressly/goose/issues/262#issue-960391249">comment</a> summarized it well:</p>
-<blockquote>
-<p><em>We should meet users in the middle (lots of great feedback from the community) and give them the flexibility to use <code>goose</code> as they see fit. The responsibility will be shifted from the tool itself, to the end user.</em></p>
-</blockquote>
-<p>To recap, this is the new behaviour of <code>goose</code>:</p>
-<p>If you attempt to apply missing (out-of-order) migrations <code>goose</code> will raise an error (previously <code>goose</code> would ignore these migrations). However, if you do want to apply these missing migrations pass <code>goose</code> the <code>-allow-missing</code> flag, or if using as a library supply the functional option <code>goose.WithAllowMissing()</code> to Up, UpTo or UpByOne commands.</p>
-<p>More details can be found in the <a href="https://github.com/pressly/goose/releases/tag/v3.3.0">Changelog</a> and the <a href="https://github.com/pressly/goose/issues/262">issue #262</a>.</p>
-<p>Hope folks find this useful. More awesome things are planned for <code>goose</code> 🚀.</p>
-<p>ps. consider dropping <a href="https://github.com/pressly/goose">pressly/goose</a> a ⭐️ if you find this package useful.</p>
+<figure>
+<p><img alt="goose up commands illustrated" src="../../../assets/goose-down-command.png" width="550px;" /></p>
+</figure>
+<div class="admonition note">
+<p><strong>Bonus</strong></p>
+<p><code>goose down-to 0</code> is the same as <code>goose reset</code>. Applying <strong>all</strong> down migrations.</p>
+<p><code>goose redo</code> is the same as <code>goose down</code> followed by <code>goose up-by-one</code>. Reapplying the latest migration.</p>
+</div>
 
 
 
@@ -848,7 +995,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../better-tests/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Better tests with containers" rel="prev">
+        <a href="../no-version-migrations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ad-hoc migrations with no versioning" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -857,26 +1004,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Better tests with containers
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../no-version-migrations/" class="md-footer__link md-footer__link--next" aria-label="Next: Ad-hoc migrations with no versioning" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
               Ad-hoc migrations with no versioning
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   

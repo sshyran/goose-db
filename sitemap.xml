@@ -36,6 +36,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://pressly.github.io/goose/blog/2021/visualizing-up-down-commands/</loc>
+         <lastmod>2021-12-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://pressly.github.io/goose/blog/2021/welcome/</loc>
          <lastmod>2021-12-19</lastmod>
          <changefreq>daily</changefreq>
