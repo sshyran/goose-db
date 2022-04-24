@@ -310,7 +310,12 @@ func (m ClickHouseDialect) dbVersionQuery(db *sql.DB) (*sql.Rows, error) {
 }
 
 func (m ClickHouseDialect) insertVersionSQL() string {
-	return fmt.Sprintf("INSERT INTO %s (version_id, is_applied) VALUES ($1, $2)", TableName())
+	// TODO(mf): how did this work before?
+	// Note, throughout the codebase is_applied is always true on inserts, so maybe hard-coding this
+	// is fine?
+	// There is no separate type for boolean values. Use UInt8 type, restricted to the values 0 or 1.
+	// Ref: https://clickhouse.com/docs/en/sql-reference/data-types/boolean/
+	return fmt.Sprintf("INSERT INTO %s (version_id, is_applied) VALUES ($1, 1)", TableName())
 }
 
 func (m ClickHouseDialect) migrationSQL() string {
@@ -318,5 +323,9 @@ func (m ClickHouseDialect) migrationSQL() string {
 }
 
 func (m ClickHouseDialect) deleteVersionSQL() string {
-	return fmt.Sprintf("ALTER TABLE %s DELETE WHERE version_id = $1", TableName())
+	// TODO(mf): deletes are asynchronous, but need to rethink whether this makes sense here?
+	// Ref: https://clickhouse.com/docs/en/operations/settings/#mutations_sync
+	// Ref: https://clickhouse.com/docs/en/sql-reference/statements/alter/delete/
+	// Ref: https://clickhouse.com/docs/en/faq/operations/delete-old-data/
+	return fmt.Sprintf("ALTER TABLE %s DELETE WHERE version_id = $1 SETTINGS mutations_sync = 2", TableName())
 }
