@@ -3,6 +3,7 @@ package clickhouse_test
 import (
 	"path/filepath"
 	"testing"
+	"time"
 
 	"github.com/matryer/is"
 	"github.com/pressly/goose/v3"
@@ -36,6 +37,8 @@ func TestClickHouse(t *testing.T) {
 	// TODO(mf): this will fail if SETTINGS mutations_sync = 0.. because the
 	// delete operation above is async and that is the default. I updated the
 	// dialect string, but not sure that's correct..
+	time.Sleep(5 * time.Second)
+	// Add retry here?
 	currentVersion, err = goose.GetDBVersion(db)
 	is.NoErr(err)
 	is.Equal(currentVersion, int64(0))
