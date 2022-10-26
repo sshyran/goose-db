@@ -1,7 +1,7 @@
 -- +goose Up
 -- +goose StatementBegin
 INSERT INTO owners(owner_name, owner_type) 
-    VALUES ('james', 'user'), ('pressly', 'organization');
+    VALUES ('james', 'user'), ('openbasehq', 'organization');
 
 INSERT INTO repos(repo_full_name, repo_owner_id) 
     VALUES ('james/rover', 3), ('openbasehq/goose', 4);
@@ -9,5 +9,5 @@ INSERT INTO repos(repo_full_name, repo_owner_id)
 
 -- +goose Down
 -- +goose StatementBegin
-DELETE FROM owners WHERE owner_name IN ('james', 'pressly');
+DELETE FROM owners WHERE owner_name IN ('james', 'openbasehq');
 -- +goose StatementEnd
